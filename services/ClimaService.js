@@ -8,19 +8,19 @@ app.factory("clima", function($http){
     var url = URLWEATHER.replace("CIUDAD", ciudad);
     url = url.replace("PAIS", pais);
 
-    console.log(url);
-
     $http.get(url).success(function(data){
-        temp=data.query.results.channel
+        service.temp=data.query.results.channel
           .item.condition.temp;
-        description=data.query.results.channel
+        service.description=data.query.results.channel
           .item.condition.text;
     });
 
   };
 
-  return {temp:temp
+  var service = {temp:temp
   , description: description
   , loadWeather: loadWeather};
+
+  return service;
 
 });

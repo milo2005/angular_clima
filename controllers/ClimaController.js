@@ -1,14 +1,15 @@
-app.controller("ClimaController",function($scope,clima
-        ,$timeout){
-          
-  $scope.temp= clima.temp;
-  $scope.description = clima.description;
+app.controller("ClimaController",function($scope,clima){
+
+  $scope.temp = function(){
+    return clima.temp;
+  };
+
+  $scope.description = function(){
+    return clima.description;
+  };
 
   $scope.refresh=function(ciudad, pais){
     clima.loadWeather(ciudad, pais);
-    $timeout(function(){
-      alert(clima.temp +" "+clima.description);
-    },5000);
   }
 
 
